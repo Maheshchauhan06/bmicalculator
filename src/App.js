@@ -6,6 +6,7 @@ const App = () => {
   const [cartitem, setcartitem] = useState([]);
   const [totalvalue, settotalvalue] = useState(0);
   const [coinadd, setcoinadd] = useState(1);
+  const [inputvalue, setinputvalue] = useState("");
 
   const coindata = [
     {
@@ -37,11 +38,11 @@ const App = () => {
       const newCartItems = [...cartitem];
       newCartItems[existingItemIndex] = {
         ...newCartItems[existingItemIndex],
-        quantity: newCartItems[existingItemIndex].quantity + 1,
+        quantity: newCartItems[existingItemIndex].quantity + coinadd,
       };
       setcartitem(newCartItems);
     } else {
-      setcartitem([...cartitem, { ...item, quantity: 1 }]);
+      setcartitem([...cartitem, { ...item, quantity: coinadd }]);
     }
   };
 
@@ -50,7 +51,7 @@ const App = () => {
     for (let i = 0; i < cartitem.length; i++) {
       total += cartitem[i].price * cartitem[i].quantity;
     }
-    settotalvalue(total * coinadd);
+    settotalvalue(total);
   }, [cartitem]);
 
   const handleprice = (e) => {

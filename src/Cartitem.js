@@ -9,7 +9,7 @@ const Cartitem = ({ data, coinadd }) => {
           <tbody>
             <tr className="details">
               <th> {data.name} </th> <th> {data.quantity} </th>{" "}
-              <td>${data.price}</td>
+              <td>${data.price * data.quantity}</td>
             </tr>
           </tbody>
         </th>
