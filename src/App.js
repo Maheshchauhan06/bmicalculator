@@ -51,7 +51,7 @@ const App = () => {
       total += cartitem[i].price * cartitem[i].quantity;
     }
     settotalvalue(total * coinadd);
-  }, [cartitem, coinadd]);
+  }, [cartitem]);
 
   const handleprice = (e) => {
     if (e.target.value === "") {
