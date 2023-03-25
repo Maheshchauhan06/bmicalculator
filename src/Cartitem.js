@@ -1,20 +1,14 @@
 import React from "react";
 
-const Cartitem = ({ data, coinadd }) => {
+const Cartitem = ({ data, key }) => {
+  console.log(key);
+
   return (
-    <div>
-      <div className="cart_details">
-        <th>
-          {" "}
-          <tbody>
-            <tr className="details">
-              <th> {data.name} </th> <th> {data.quantity} </th>{" "}
-              <td>${data.price * data.quantity}</td>
-            </tr>
-          </tbody>
-        </th>
-      </div>
-    </div>
+    <tr className="details">
+      <td>{data.name}</td>
+      <td>{data.quantity}</td>
+      <td>${(data.price * data.quantity).toFixed(2)}</td>
+    </tr>
   );
 };
 

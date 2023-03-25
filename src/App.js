@@ -92,9 +92,9 @@ const App = () => {
 
       <div className="cartitem_detail">
         <h2>My Cart</h2>
-        {cartitem.map((data, i) => {
-          return <Cartitem data={data} coinadd={coinadd} key={i} />;
-        })}{" "}
+        {cartitem.map((data, index) => {
+          return <Cartitem data={data} coinadd={coinadd} />;
+        })}
         <h2> total value = ${totalvalue.toFixed(2)} </h2>
       </div>
     </div>
