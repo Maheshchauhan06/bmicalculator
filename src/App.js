@@ -6,7 +6,6 @@ const App = () => {
   const [cartitem, setcartitem] = useState([]);
   const [totalvalue, settotalvalue] = useState(0);
   const [coinadd, setcoinadd] = useState(1);
-  const [inputvalue, setinputvalue] = useState("");
 
   const coindata = [
     {
@@ -31,6 +30,10 @@ const App = () => {
 
   // add item
   const additem = (item) => {
+    let addvalue = 1;
+    if (coinadd) {
+      addvalue = coinadd;
+    }
     const existingItemIndex = cartitem.findIndex(
       (cartItem) => cartItem.id === item.id
     );
@@ -38,12 +41,13 @@ const App = () => {
       const newCartItems = [...cartitem];
       newCartItems[existingItemIndex] = {
         ...newCartItems[existingItemIndex],
-        quantity: newCartItems[existingItemIndex].quantity + coinadd,
+        quantity: newCartItems[existingItemIndex].quantity + addvalue,
       };
       setcartitem(newCartItems);
     } else {
-      setcartitem([...cartitem, { ...item, quantity: coinadd }]);
+      setcartitem([...cartitem, { ...item, quantity: addvalue }]);
     }
+    setcoinadd(1);
   };
 
   useEffect(() => {
