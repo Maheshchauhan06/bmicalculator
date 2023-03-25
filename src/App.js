@@ -29,7 +29,7 @@ const App = () => {
   ];
 
   // add item
-  const additem = (item) => {
+  const additem = (item, inputElement) => {
     let addvalue = 1;
     if (coinadd) {
       addvalue = coinadd;
@@ -48,6 +48,7 @@ const App = () => {
       setcartitem([...cartitem, { ...item, quantity: addvalue }]);
     }
     setcoinadd(1);
+    inputElement.value = "";
   };
 
   useEffect(() => {
@@ -81,7 +82,9 @@ const App = () => {
                 step="0.01"
                 onChange={(e) => handleprice(e)}
               />
-              <button onClick={() => additem(data)}>add to cart</button>
+              <button onClick={(e) => additem(data, e.target.previousSibling)}>
+                add to cart
+              </button>
             </div>
           );
         })}
